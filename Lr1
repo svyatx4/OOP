@@ -1,1 +1,99 @@
+// >>>>>>> С ИСПОЛЬЗОВАНИЕМ СТАТИЧЕСКОГО МЕТОДА <<<<<<<<<<
+//класс, содержащий статический метод
+import java.util.ArrayList;
+import java.util.Scanner;
 
+public class MyTask {
+public static void DoTask() {
+	Scanner sc = new Scanner(System.in);
+	System.out.print("Enter amount of numbers > ");
+	int N = sc.nextInt();
+	
+	double a;
+	ArrayList<Double> aa = new ArrayList();
+	
+	for(int i=0;i<N;i++) {
+		System.out.print("Enter the number " + String.valueOf(i+1) +" > ");
+		a = sc.nextDouble();
+		aa.add(a);
+	}
+	
+	double max = aa.get(0); 
+	double min = aa.get(0); 
+	double sr = 0;
+	for(int i=0;i<N;i++) {
+	if(aa.get(i) > max)	{
+		max = aa.get(i);
+	}
+	if(aa.get(i) < min) {
+		min = aa.get(i);
+	}
+	sr += aa.get(i);
+	}
+	
+	System.out.println("The sum of max and min elements > " + (max + min));
+	System.out.println("The average value > " + (sr/N));
+	
+	sc.close();
+}
+}
+//использование статического метода в функции main
+public class Starter {
+
+	public static void main(String[] args) {
+       MyTask.DoTask();		
+	}
+}
+
+//---------------------------------------------------------
+//>>>>> С ИСПОЛЬЗОВАНИЕМ НЕСТАТИЧЕСКОГО МЕТОДА <<<<<<
+//класс, содержащий нестатический метод
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class MyTask2Edit {
+private ArrayList<Double> aa = new ArrayList<Double>();
+private int N;
+
+public void InputArray()
+{
+	aa.clear();
+	Scanner sc = new Scanner(System.in);
+	System.out.print("Enter amount of the numbers > ");
+	N = sc.nextInt();
+	
+	double a;
+	for(int i=0;i<N;i++) {
+		System.out.print("Enter the number " + String.valueOf(i+1) +" > ");
+		a = sc.nextDouble();
+		aa.add(a);
+	}
+	sc.close();
+}
+
+public void PrintResult() {
+	double max = aa.get(0); 
+	double min = aa.get(0); 
+	double sr = 0;
+	for(int i=0;i<N;i++) {
+	if(aa.get(i) > max)	{
+		max = aa.get(i);
+	}
+	if(aa.get(i) < min) {
+		min = aa.get(i);
+	}
+	sr += aa.get(i);
+	}
+	System.out.println("The sum of max and min elements > " + (max + min));
+	System.out.println("The average value > " + (sr/N));
+}
+}
+//использование методов класса MyTask2Edit в функции main
+public class Starter {
+
+	public static void main(String[] args) {
+       MyTask2Edit ob = new MyTask2Edit();
+       ob.InputArray();
+       ob.PrintResult();
+	}
+}
