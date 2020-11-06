@@ -1,1 +1,233 @@
+//список названий комплектующих деталей
+public enum name {
+        CPU,
+	    Motherboard,
+	    GraphicsCard,
+	    SSD,
+	    PowerUnit
+}
 
+//класс, созданный под комплектующие детали
+public class Parts {
+        name name;
+        String id;
+        int amountSt;
+        int amountSh;
+    }
+    
+//класс сотрудников цеха
+public class Workers {
+    String FL;
+    String id;
+    public Workers(String nFL, String Nid) {
+        FL = nFL;
+        id = Nid;
+    }
+}
+
+//класс, реализующий методы для учета комплектующих
+import java.util.Hashtable;
+import java.util.Vector;
+import java.util.Optional;
+import java.util.Map.Entry;
+
+ public class Accounting {
+	Hashtable<Parts, Vector<Workers>> parts = 
+		    new Hashtable<Parts, Vector<Workers>>();
+
+		    private Accounting() { }
+		    public static Accounting InS() {
+		        Accounting res = new Accounting();
+		        Parts part = new Parts();
+		        part.name = name.CPU;
+		        part.id = "0009201";
+		        part.amountSt = 56;
+		        part.amountSh = 18;
+		        res.parts.put( 
+		            part, 
+		            new Vector<>());
+
+		        part = new Parts();
+		        part.name = name.Motherboard;
+		        part.id = "780012";
+		        part.amountSt = 14;
+		        part.amountSh = 9;
+		        res.parts.put(
+		            part,
+		            new Vector<>());
+		      
+		        part = new Parts();
+		        part.name = name.SSD;
+		        part.id = "993112";
+		        part.amountSt = 14;
+		        part.amountSh = 2;
+		        res.parts.put(
+		            part,
+		            new Vector<>());
+
+		        part = new Parts();
+		        part.name = name.GraphicsCard;
+		        part.id = "990222";
+		        part.amountSt = 24;
+		        part.amountSh = 6;
+		        res.parts.put(
+		            part,
+		            new Vector<>());
+
+		        part = new Parts();
+		        part.name = name.PowerUnit;
+		        part.id = "008123";
+		        part.amountSt = 30;
+		        part.amountSh = 15;
+		        res.parts.put(
+		            part,
+		            new Vector<>());
+
+                return res;
+                
+		    }
+
+		    public void Output() {
+		        parts.entrySet().stream().forEach(e->{
+		            Parts tek = e.getKey();
+		            System.out.println("Name > " + tek.name + "\n" +
+		            "ID > " + tek.id + "\n" +
+		            "Amount at the Storage > " + tek.amountSt + "\n" +
+		            "Amount at the Assembly Shop > " + tek.amountSh + "\n");
+
+		        });
+
+            }
+            
+            public void GetToShop(name n, int aa) {
+            int ash;
+            int ast;
+            Optional<Entry<Parts, Vector<Workers>>> find =
+            parts.entrySet().stream().
+            filter(e->e.getKey().name.equals(n)).findFirst();
+
+            if(find.isPresent()) {
+                 ash = find.get().getKey().amountSh;
+                 ast = find.get().getKey().amountSt;
+                 if((ast - aa) < 0) {
+                     System.out.println("There're not that many parts in the Storage: " + n + " > " + ast);
+                 } else {
+                     ast -= aa;
+                     ash += aa;
+                    System.out.println("Now at the Storage: " + n + " > " + ast);
+                    System.out.println("Now at the Shop: " + n + " > " + ash);
+                    find.get().getKey().amountSh = ash;
+                    find.get().getKey().amountSt = ast;
+                }
+            }
+        }
+        
+            public void ReturnToStorage(name n, int aa) {
+                int ash;
+                int ast;
+                Optional<Entry<Parts, Vector<Workers>>> find =
+                parts.entrySet().stream().
+                filter(e->e.getKey().name.equals(n)).findFirst();
+    
+                if(find.isPresent()) {
+                     ash = find.get().getKey().amountSh;
+                     ast = find.get().getKey().amountSt;
+                     if((ash - aa) < 0) {
+                         System.out.println("There're not that many parts in the Assembly Shop: " + n + " > " + ash);
+                     } else {
+                         ash -= aa;
+                         ast += aa;
+                        System.out.println("Now at the Shop: " + n + " > " + ash);
+                        System.out.println("Now at the Storage: " + n + " > " + ast);
+                        find.get().getKey().amountSh = ash;
+                        find.get().getKey().amountSt = ast;
+                    }
+                }
+                
+            }
+		}
+    
+    //класс с функцией main
+    import java.util.Scanner;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        Accounting Acc = Accounting.InS();
+        System.out.println("Identification of worker:");
+        System.out.print("First name, last name > ");
+        String fl = sc.nextLine();
+        System.out.print("ID of worker > ");
+        String idW = sc.next();
+        Workers worker = new Workers(fl, idW);
+        int op = 0;
+        do {
+            System.out.println("Dear employee " + worker.FL +
+            ", choose the command: \n 1 - Accounting\n" +
+            "2 - Get some parts to the Assembly Shop\n" +
+            "3 - Return some parts to the Storage\n" +
+            "0 - Exit\n");
+            System.out.print("Your choice > ");
+            op = sc.nextInt();
+            switch(op) {
+                case 1: Acc.Output(); break;
+                case 2: System.out.print("Enter amount of moving parts > ");
+                int am = sc.nextInt();
+                int type;
+                System.out.print("Choose the type of part: \n" +
+                "1 - CPU(000)\n" +
+                "2 - Motherboard(780)\n" +
+                "3 - GraphicsCard(990)\n" +
+                "4 - SSD(993)\n" +
+                "5 - PowerUnit(008)\n" +
+                "Your choice > ");
+                type = sc.nextInt();
+                if(type == 1) {
+                    Acc.GetToShop(name.CPU, am);
+                } else if(type == 2) {
+                    Acc.GetToShop(name.Motherboard, am);
+                } else if(type ==3) {
+                    Acc.GetToShop(name.GraphicsCard, am);
+                } else if(type == 4) {
+                    Acc.GetToShop(name.SSD, am);
+                } else if(type == 5) {
+                    Acc.GetToShop(name.PowerUnit, am);
+                } else {
+                    System.out.println("Error");
+                }
+                break;
+
+                case 3: System.out.print("Enter amount of moving parts > ");
+                int am1 = sc.nextInt();
+                int type1;
+                System.out.print("Choose the type of part: \n" +
+                "1 - CPU(000)\n" +
+                "2 - Motherboard(780)\n" +
+                "3 - GraphicsCard(990)\n" +
+                "4 - SSD(993)\n" +
+                "5 - PowerUnit(008)\n" +
+                "Your choice > ");
+                type1 = sc.nextInt();
+                if(type1 == 1) {
+                    Acc.ReturnToStorage(name.CPU, am1);
+                } else if(type1 == 2) {
+                    Acc.ReturnToStorage(name.Motherboard, am1);
+                } else if(type1 ==3) {
+                    Acc.ReturnToStorage(name.GraphicsCard, am1);
+                } else if(type1 == 4) {
+                    Acc.ReturnToStorage(name.SSD, am1);
+                } else if(type1 == 5) {
+                    Acc.ReturnToStorage(name.PowerUnit, am1);
+                } else {
+                    System.out.println("Error");
+                }
+                break;
+
+                default:break;
+            } 
+        } while (op != 0);
+
+        sc.close();
+        System.out.println("Work is done");
+    }
+}
