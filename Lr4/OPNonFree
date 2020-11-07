@@ -1,0 +1,18 @@
+public final class OPNonFree extends OperatingSystem {
+    private int price;
+
+    public OPNonFree(String N, String V, String M, int B, int P) {
+        super(N, V, M, B);
+        price = P;
+    }
+
+    @Override
+    public String getName() {
+        return "Non-Free Operating System > " +
+        "\n Name: " + name +
+        "\n Version: " + version +
+        "\n Memory Space: " + memory +
+        "\n Bitness: " + bit +
+        "\n Price: " + price + "$";
+    }
+}
