@@ -1,0 +1,18 @@
+public final class OPFree extends OperatingSystem {
+    private int date;
+
+    public OPFree(String N, String V, String M, int B, int D) {
+        super(N, V, M, B);
+        date = D;
+    }
+
+    @Override
+    public String getName() {
+        return "Free Operating System > " +
+        "\n Name: " + name +
+        "\n Version: " + version +
+        "\n Memory Space: " + memory +
+        "\n Bitness: " + bit +
+        "\n Release Date: " + date;
+    }
+}
