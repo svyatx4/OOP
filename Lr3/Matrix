@@ -1,0 +1,84 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Matrix {
+    Scanner sc = new Scanner(System.in);
+         private int m, n;
+         private int[][] array;
+        
+        public void CreateMatrix() {
+            System.out.print("Enter the amount of matrix's rows > ");
+            m = sc.nextInt();
+            System.out.print("Enter the amount of matrix's cols > ");
+            n = sc.nextInt();
+            this.array = new int[m][n];
+
+        System.out.println("Enter the matrix's elements >");
+        for (int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                array[i][j] = sc.nextInt();
+            }
+        } 
+    }
+
+    public void CreateRandom() {
+        System.out.print("Enter the amount of matrix's rows > ");
+            m = sc.nextInt();
+            System.out.print("Enter the amount of matrix's cols > ");
+            n = sc.nextInt();
+            this.array = new int[m][n];
+
+            Random r = new Random();
+        System.out.println("Enter the matrix's elements >");
+        for (int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                int n = (r.nextInt(2000) - 1000);
+                array[i][j] = n;
+            }
+        }  
+    }
+
+        public void OutputMatrix() {
+        System.out.println("\nYour source array > ");
+        for (int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.print("\n");
+        }
+    }
+
+    public void AverageCol() {
+       System.out.println("\nThe average value of each matrix's column >");
+       for (int j = 0; j < n; j++) {
+        int sum = 0;
+        int k = 0;
+              for(int i = 0; i < m; i++) {
+            ++k;
+            sum += array[i][j];
+      }
+      System.out.print((sum/k) + " ");
+    }
+       System.out.print("\n");
+}
+
+public void ResultMatrix() {
+    int[][] b = new int[m][n];
+    System.out.println("\nResulting matrix > ");
+        for (int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+               if(array[i][j] % 5 == 0) {
+                  b[i][j] = 5;
+               } else if(array[i][j] % 2 == 0) {
+                b[i][j] = 2;
+               } else {
+                b[i][j] = 0;  
+               }
+               System.out.print(b[i][j] + " ");
+             }
+             System.out.print("\n");
+        }
+        System.out.print("--------------------------------------------------");
+        System.out.print("\n");
+    }
+}
