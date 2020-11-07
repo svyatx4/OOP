@@ -1,0 +1,17 @@
+public class OperatingSystem extends Software {
+    protected int bit;
+
+    public OperatingSystem(String N, String V, String M, int B) {
+        super(N, V, M);
+        bit = B;
+    }
+
+    @Override
+    public String getName() {
+        return "Operating System > " +
+        "\n Name: " + name +
+        "\n Version: " + version +
+        "\n Memory Space: " + memory +
+        "\n Bitness: " + bit;
+    }
+}
