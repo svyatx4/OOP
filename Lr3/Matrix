@@ -29,7 +29,6 @@ public class Matrix {
             this.array = new int[m][n];
 
             Random r = new Random();
-        System.out.println("Enter the matrix's elements >");
         for (int i = 0; i < m; i++) {
             for(int j = 0; j < n; j++) {
                 int n = (r.nextInt(2000) - 1000);
