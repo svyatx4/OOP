@@ -1,0 +1,17 @@
+public class Instrumental extends Software {
+    protected boolean IDE;
+
+    public Instrumental(String N, String V, String M, boolean ide) {
+      super(N, V, M);
+      IDE = ide;
+    }
+
+    @Override
+    public String getName() {
+        return "Instrumental Software >" +
+        "\n Name: " + name +
+        "\n Version: " + version +
+        "\n Memory Space: " + memory +
+        "\n Integrated Development Environment: " + IDE;
+    }
+}
