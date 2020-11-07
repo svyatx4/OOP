@@ -1,0 +1,38 @@
+//класс, содержащий статический метод
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class MyTask {
+public static void DoTask() {
+	Scanner sc = new Scanner(System.in);
+	System.out.print("Enter amount of numbers > ");
+	int N = sc.nextInt();
+	
+	double a;
+	ArrayList<Double> aa = new ArrayList();
+	
+	for(int i=0;i<N;i++) {
+		System.out.print("Enter the number " + String.valueOf(i+1) +" > ");
+		a = sc.nextDouble();
+		aa.add(a);
+	}
+	
+	double max = aa.get(0); 
+	double min = aa.get(0); 
+	double sr = 0;
+	for(int i=0;i<N;i++) {
+	if(aa.get(i) > max)	{
+		max = aa.get(i);
+	}
+	if(aa.get(i) < min) {
+		min = aa.get(i);
+	}
+	sr += aa.get(i);
+	}
+	
+	System.out.println("The sum of max and min elements > " + (max + min));
+	System.out.println("The average value > " + (sr/N));
+	
+	sc.close();
+}
+}
