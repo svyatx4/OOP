@@ -1,0 +1,22 @@
+import java.util.Vector;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+        Vector<Software> allDynamics = new Vector<Software>();
+        allDynamics.add(new Software("Unknown", "?", "?"));
+        allDynamics.add(new OperatingSystem("Windows", "XP", "2Gb", 32));
+        allDynamics.add(new OPFree("ReactOS","0.4.13", "500Mb", 64, 2020));
+        allDynamics.add(new OPNonFree("macOS", "Lion 10.8", "8Gb", 64, 30));
+        allDynamics.add(new Application("Heroes of Might and Magic", "II", "2Gb", type.Entertaining));
+        allDynamics.add(new Instrumental("Visual Studio", "16.6.5", true, 2));
+        allDynamics.add(new FreeInstrument("Visual Studio Code", "Java", "500Mb", true, 2015));
+        allDynamics.add(new NonFreeInstrument("PhpStorm", "2020.2.3", "2Gb", true, 199));
+       
+        for(int i =0; i < allDynamics.size(); i++) 
+        {
+            System.out.println(allDynamics.get(i).getName());
+            System.out.println("--------------------------");
+        }        
+        
+    }
+}
