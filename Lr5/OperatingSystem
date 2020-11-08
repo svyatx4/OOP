@@ -1,0 +1,24 @@
+public class OperatingSystem extends Software implements Shorcut {
+    protected int bit;
+
+    public OperatingSystem(String N, String V, String M, int B) {
+        super(N, V, M);
+        bit = B;
+    }
+
+    public void Draw() {
+        String str =
+        "_____________________________________\n" +
+        "|                                    |\n" +
+        "    |||Operating System >> " + name + "|||\n" +
+        "|____________________________________|\n";
+        System.out.println(str);
+    }
+
+    public String Info() {
+        return 
+        " Version: " + version +
+        "\n Memory Space: " + memory +
+        "\n Bitness: " + bit;
+    }
+}
