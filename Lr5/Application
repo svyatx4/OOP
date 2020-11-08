@@ -23,4 +23,9 @@ public class Application extends Software implements Shorcut {
         "\n Memory Space: " + this.memory +
         "\n Type: " + type;
     }
+    
+    @Override
+    public String getName() {
+        return "Application Software >" + name;
+    }
 }
