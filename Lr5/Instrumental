@@ -1,0 +1,26 @@
+public class Instrumental extends Software implements Shorcut {
+    protected boolean IDE;
+
+    public Instrumental(String N, String V, String M, boolean ide) {
+      super(N, V, M);
+      IDE = ide;
+    }
+
+    public void Draw() {
+        String str =
+        "_________\n" +
+        "|-------|\n" +
+        "|  Ins  |\n" +
+        "|_______|<-";
+        System.out.println(str);
+        System.out.println(" " + name + " \n");
+    }
+
+    public String Info() {
+        return "Instrumental Software >" +
+        //"\n Name: " + name +
+        "\n Version: " + version +
+        "\n Memory Space: " + memory +
+        "\n Integrated Development Environment: " + IDE;
+    }
+}
