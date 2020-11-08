@@ -21,4 +21,9 @@ public class OperatingSystem extends Software implements Shorcut {
         "\n Memory Space: " + memory +
         "\n Bitness: " + bit;
     }
+    
+    @Override
+    public String getName() {
+        return "Operating System >" + name;
+    }
 }
