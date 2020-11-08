@@ -1,0 +1,16 @@
+public class Software {
+    protected String name;
+    protected String memory;
+    protected String version;
+
+    public Software(String N, String V, String M) {
+        name = N;
+        version = V;
+        memory = M;
+    }
+    
+    public String getName() {
+        return "Software >" +
+        "\n Name: " + this.name;
+    }
+}
