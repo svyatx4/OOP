@@ -23,4 +23,9 @@ public class Instrumental extends Software implements Shorcut {
         "\n Memory Space: " + memory +
         "\n Integrated Development Environment: " + IDE;
     }
+    
+    @Override
+    public String getName() {
+        return "Instrumental Software >" + name;
+    }
 }
