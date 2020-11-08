@@ -8,7 +8,7 @@ public final class NonFreeInstrument extends Instrumental {
 
     @Override
     public String getName() {
-        return "Instrumental Software >" +
+        return "Non-Free Instrumental Software >" +
         "\n Name: " + name +
         "\n Version: " + version +
         "\n Memory Space: " + memory +
