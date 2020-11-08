@@ -1,0 +1,18 @@
+public final class NonFreeInstrument extends Instrumental {
+    private int price;
+
+    public NonFreeInstrument(String N, String V, String M, boolean ide, int P) {
+        super(N, V, M, ide);
+        price = P;
+    }
+
+    @Override
+    public String getName() {
+        return "Non-Free Instrumental Software >" +
+        "\n Name: " + name +
+        "\n Version: " + version +
+        "\n Memory Space: " + memory +
+        "\n Integrated Development Environment: " + IDE +
+        "\n Price: " + price + "$";
+    }
+}
