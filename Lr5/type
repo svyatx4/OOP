@@ -1,0 +1,6 @@
+public enum type {
+    General_purpose,
+    Special_purpose,
+    Entertaining,
+    Professional
+}
