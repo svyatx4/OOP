@@ -18,7 +18,6 @@ public class Application extends Software implements Shorcut {
 
     public String Info() {
         return "Application Software >" +
-        //"\n Name: " + this.name +
         "\n Version: " + this.version +
         "\n Memory Space: " + this.memory +
         "\n Type: " + type;
