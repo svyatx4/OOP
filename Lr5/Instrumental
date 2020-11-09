@@ -18,7 +18,6 @@ public class Instrumental extends Software implements Shorcut {
 
     public String Info() {
         return "Instrumental Software >" +
-        //"\n Name: " + name +
         "\n Version: " + version +
         "\n Memory Space: " + memory +
         "\n Integrated Development Environment: " + IDE;
