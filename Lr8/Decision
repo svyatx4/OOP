@@ -1,0 +1,29 @@
+public class Decision {
+
+    public double Decision1(int n, double x, double p) {
+        double an = 0;
+        double k = 1;
+        double k1 = 0;
+        for(int i = 1; i <= n; i++) {
+            k = k*(i+1);
+            k1 = k*(i+2);
+            an += -(Math.pow(p, (i-1)) * Math.pow(x, i))/k + (Math.pow(p, i) * Math.pow(x, (i+1)))/k1;
+        }
+
+       double result = Math.round(an * 10000.0000) / 10000.0000;
+       return result; 
+    }
+
+    public double Decision2(int n, int r)
+	{
+        double an = 0;
+        for(int i = 1; i <= n; i++) {
+            for(int j = 1; j <= r; j++) {
+                an = (Math.pow(i, 2) + Math.pow(j, 2))/Math.pow(i, 3);
+            }
+        }
+
+       double result = Math.round(an * 10000.0000) / 10000.0000;
+       return result;
+    }
+}
