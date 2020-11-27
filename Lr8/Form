@@ -1,0 +1,84 @@
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
+public class Form {
+    private JLabel text;
+    private JLabel X, P;
+    private JLabel N, R;
+    private JTextField _X, _P;
+    private JTextField _N, _R;
+    private JTextField answer1, answer2;
+
+    public Form() {
+        final JFrame jfrm = new JFrame("Task #8");
+        jfrm.setSize(270, 250);
+        jfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jfrm.setLayout(new FlowLayout(FlowLayout.LEFT));
+        jfrm.setLocationRelativeTo(null);
+
+        text = new JLabel("Enter the value of X:");
+        jfrm.add(text);
+        _X = new JTextField(10); jfrm.add( _X );
+        X = new JLabel(); jfrm.add(X);
+        
+        text = new JLabel("Enter the value of P:");
+        jfrm.add(text);
+        _P = new JTextField(10); jfrm.add( _P );
+        P = new JLabel(); jfrm.add (P);
+        
+        text = new JLabel("Enter the iterations number N:");
+        jfrm.add(text);
+        _N = new JTextField(5); jfrm.add( _N );
+        N = new JLabel(); jfrm.add(N);
+
+        text = new JLabel("Enter the iterations number R:");
+        jfrm.add(text);
+        _R = new JTextField(5); jfrm.add( _R );
+        R = new JLabel(); jfrm.add( R );
+
+        text = new JLabel("Result of 1st formula:");
+        jfrm.add(text);
+        answer1 = new JTextField(9);
+        jfrm.add(answer1);
+        
+        text = new JLabel("Result of 2nd formula:");
+        jfrm.add(text);
+        answer2 = new JTextField(9);
+        jfrm.add(answer2);
+
+        final JButton bt = new JButton ("Solve");
+        
+        bt.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                String numberX = _X.getText(); String numberP = _P.getText();
+                String numberN = _N.getText(); String numberR = _R.getText();
+
+                try
+                {
+                    double x = Double.parseDouble(numberX);
+                    double p = Double.parseDouble(numberP);
+                    int n = Integer.parseInt ( numberN );
+                    int r = Integer.parseInt ( numberR );
+
+                    Decision d = new Decision();
+                    String an1 = Double.toString(d.Decision1(n, x, p));
+                    String an2 = Double.toString(d.Decision2(n, r));
+                    answer1.setText(an1);
+                    answer2.setText(an2);
+                }
+                catch ( NumberFormatException ex )
+                {
+                    JOptionPane.showMessageDialog(jfrm, "Enter correct numerical values, please", "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+                }
+             }
+        } );
+        
+        jfrm.add(bt);
+        jfrm.setVisible(true);
+    }
+}
