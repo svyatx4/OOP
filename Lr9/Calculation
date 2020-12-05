@@ -1,0 +1,44 @@
+public class Calculation {
+    private double result = 0;
+
+    public double Calc(double x, double t, double f, double y, int a, int b, int N, int K)
+    {
+        double res = 0;
+        for(int i = 1; i <= N; i++) {
+            for(int j = 1; j <= K; j++){
+                res += (b * Math.pow(t, i) * a * Math.pow(x, i) 
+                + b * Math.pow(f, j) * a * Math.pow(y, j)) / (t * i * j);
+            }
+        }
+
+        result = Math.round(res * 10000.0000) / 10000.0000;
+        return result;
+    }
+
+    public String Calc2() {
+        String result2;
+        int intres = (int)result;
+        result2 = Integer.toBinaryString(intres);
+        return result2;
+    }
+
+    public String Calc8() {
+        String result8;
+        int intres = (int)result;
+        result8 = Integer.toOctalString(intres);
+        return result8;
+    }
+
+    public String Calc10() {
+        int intres = (int)result;
+        String result10 = Integer.toString(intres);
+        return result10;
+    }
+
+    public String Calc16() {
+        String result16;
+        int intres = (int)result;
+        result16 = Integer.toHexString(intres);
+        return result16;
+    }
+}
