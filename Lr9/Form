@@ -1,0 +1,108 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Form {
+    private JLabel text;
+    private JLabel X, Y, F, T;
+    private JTextField _X, _Y, _F, _T;
+    private JButton btnOK;
+
+    public Form() {
+        final JFrame jfrm = new JFrame("Task #9");
+        jfrm.setSize(340, 340);
+        jfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jfrm.setLayout(new FlowLayout(FlowLayout.LEFT));
+        jfrm.setLocationRelativeTo(null);
+
+        text = new JLabel("Enter the value X: "); jfrm.add(text);
+        _X = new JTextField(12); jfrm.add(_X);
+        X = new JLabel(); jfrm.add(X);
+        
+        text = new JLabel ("Enter the value Y: "); jfrm.add(text);
+        _Y = new JTextField(12); jfrm.add(_Y);
+        Y = new JLabel(); jfrm.add(Y);
+        
+        text = new JLabel ("Enter the value F: "); jfrm.add(text);
+        _F = new JTextField(12); jfrm.add(_F);
+        F = new JLabel(); jfrm.add(F);
+
+        text = new JLabel ("Enter the value Y: "); jfrm.add(text);
+        _T = new JTextField(12); jfrm.add(_T);
+        T = new JLabel(); jfrm.add(T);
+
+        text = new JLabel ("The coefficients: "); jfrm.add(text);
+        SpinnerModel csp1 = new SpinnerNumberModel(0, -50, 50, 1);
+        text = new JLabel("a"); jfrm.add(text);
+        JSpinner a = new JSpinner(csp1); jfrm.add(a);
+
+        text = new JLabel(" b"); jfrm.add(text);
+        SpinnerModel csp2 = new SpinnerNumberModel(0, -50, 50, 1);
+        JSpinner b = new JSpinner(csp2); jfrm.add (b);
+        
+        text = new JLabel("The iterations number: "); jfrm.add(text);
+        SpinnerModel sp1 = new SpinnerNumberModel(0, 0, 20, 1);
+        text = new JLabel("N"); jfrm.add(text);
+        JSpinner N = new JSpinner(sp1); jfrm.add(N);
+
+        text = new JLabel(" K"); jfrm.add(text);
+        SpinnerModel sp2 = new SpinnerNumberModel(0, 0, 20, 1);
+        JSpinner K = new JSpinner(sp2); jfrm.add(K);
+
+        text = new JLabel("<html><div WIDTH = 280> </div></html>"); jfrm.add(text);
+
+	    JLabel answer = new JLabel("<html><div WIDTH = 280>Result: ---</div></html>"); jfrm.add(answer);
+        JLabel an2 = new JLabel("<html><div WIDTH = 280>Binary result: ---</div></html>"); jfrm.add(an2);
+        JLabel an8 = new JLabel("<html><div WIDTH = 280>Octal result: ---</div></html>"); jfrm.add(an8);
+        JLabel an10 = new JLabel("<html><div WIDTH = 280>Decimal result: ---</div></html>"); jfrm.add(an10);
+        JLabel an16 = new JLabel("<html><div WIDTH = 280>Hex result: ---</div></html>"); jfrm.add(an16);
+        
+        text = new JLabel("<html><div WIDTH = 280> </div></html>"); jfrm.add(text);
+        btnOK= new JButton("<html><div WIDTH = 280><center>Solve</center></div></html>");
+
+		btnOK.addActionListener(new ButtonOKListener());
+        
+        btnOK.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                String numberX = _X.getText();
+                String numberY = _Y.getText();
+                String numberF = _F.getText();
+                String numberT = _T.getText();
+
+                try
+                {
+                    int A = (int)a.getValue(); int B = (int)b.getValue(); 
+                    int n = (int)N.getValue(); int k = (int)K.getValue();
+                    double X = Double.parseDouble(numberX);
+                    double Y = Double.parseDouble(numberY);
+                    double F = Double.parseDouble(numberF);
+                    double T = Double.parseDouble(numberT);
+
+                    Calculation c = new Calculation();
+                    String an = Double.toString(c.Calc(X, T, F, Y, A, B, n, k));
+                    answer.setText("<html><div WIDTH = 280>Result: " + an + "</div></html>");
+
+                    an2.setText("<html><div WIDTH = 280>Binary result: " + c.Calc2() + "</div></html>");
+                    an8.setText("<html><div WIDTH = 280>Octal result: " + c.Calc8() + "</div></html>");
+                    an10.setText("<html><div WIDTH = 280>Decimal result: " + c.Calc10() + "</div></html>");
+                    an16.setText("<html><div WIDTH = 280>Hex result: " + c.Calc16() + "</div></html>");
+                }
+
+                catch(NumberFormatException ex)
+                {
+                    JOptionPane.showMessageDialog(jfrm, "Try again", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } );
+        jfrm.add(btnOK);
+        jfrm.setVisible(true);
+    }
+
+	class ButtonOKListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Task was successfully solved\n");
+		}	
+	}
+}
