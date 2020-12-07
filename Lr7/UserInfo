@@ -1,0 +1,46 @@
+public class UserInfo {
+    private String Fname, Lname;
+    private String City, Number;
+    public group Service;
+    private String code;
+
+    public UserInfo(String fname, String lname, String city, 
+    String number, group service) {
+        Fname = fname; Lname = lname;
+        City = city; Service = service; Number = number;
+
+        if (service == group.Credit)  code = "440"; 
+        else if (service == group.Deposit)  code ="339"; 
+        else if (service == group.Credit_card)  code = "110";
+        else if (service == group.Debit_card) code = "120";
+        else if (service == group.Mortgage) code = "560";
+        else code = "990";
+    }
+
+    public String getFName() {
+        return Fname;
+    }
+
+    public String getLName() {
+        return Lname;
+    }
+
+    public group getService() {
+        return Service;
+    }
+
+    public String ToStr(group service_group) {
+        if(service_group == group.Credit) return "Credit"; 
+        else if (service_group == group.Credit_card) return "Credit card";
+        else if(service_group == group.Debit_card) return "Debit card";
+        else if(service_group == group.Deposit) return "Deposit";
+        else if(service_group == group.Insurance) return "Insurance";
+        else if(service_group == group.Mortgage) return "Mortgage";
+        else return ("Error");
+    }
+
+    public String Info() {
+        return Fname + " " + Lname + ", city: " + City + ", service: " + 
+        ToStr(Service) + " - " + code + ": " + Number;
+    }
+}
