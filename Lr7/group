@@ -1,0 +1,8 @@
+public enum group {
+    Credit_card,
+    Debit_card,
+    Credit,
+    Mortgage,
+    Deposit,
+    Insurance
+}
