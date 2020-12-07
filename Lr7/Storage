@@ -1,0 +1,54 @@
+import java.util.*;
+
+public class Storage {
+    private Vector<UserInfo> data;
+
+    public Storage() {
+       data = new Vector<UserInfo>();
+       data.add(new UserInfo("John", "Vinchester", "Seattle",
+        "16778999", group.Credit));
+       data.add(new UserInfo("Zakk", "Brandon", "New York",
+       "19022317", group.Credit_card));
+       data.add(new UserInfo("Charly", "Li", "California", 
+       "12029318", group.Debit_card));
+       data.add(new UserInfo("Corey", "Taylor", "Des Moines",
+       "13176667", group.Deposit));
+       data.add(new UserInfo("Maria", "Brink", "New York",
+       "18021519", group.Mortgage));
+       data.add(new UserInfo("Tim", "Mcilrath", "Indianapolis",
+       "1777390", group.Insurance));
+    }
+
+    public void AddUser(UserInfo obj) {
+        data.add(obj);
+    }
+
+    public void Delete(String Fname, String Lname) {
+        for(int i = 0; i < data.size(); i++) {
+            if((Fname == data.get(i).getFName()) 
+            && (Lname == data.get(i).getLName())) {
+                System.out.println("This client will be deleted: \n"
+                + data.get(i).Info());
+                data.remove(i);
+            }
+        }
+        System.out.print("\n");
+    }
+
+    public void Search(String service) {
+        for(int i = 0; i < data.size(); i++) {
+            if(service == data.get(i).ToStr(data.get(i).getService())) {
+                System.out.println("Searhing by " + service + " service >");
+                System.out.println(data.get(i).Info());
+            } 
+        }
+        System.out.print("\n");
+    }
+
+    public void All() {
+        for(int i = 0; i < data.size(); i++) {
+            System.out.println(data.get(i).Info());
+        }
+        System.out.print("\n");
+    }
+}
