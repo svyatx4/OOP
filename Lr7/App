@@ -1,0 +1,13 @@
+public class App {
+    public static void main(String[] args) throws Exception {
+        Storage task = new Storage();
+        task.AddUser(new UserInfo("Martin", "King", "Saint Louis", "17889000", group.Credit));
+        task.All();
+
+        task.Search("Credit card");
+        task.Search("Something");
+
+        task.Delete("Martin", "King");
+        task.All();
+    }
+}
