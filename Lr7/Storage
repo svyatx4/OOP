@@ -1,10 +1,10 @@
 import java.util.*;
 
 public class Storage {
-    private Vector<UserInfo> data;
+    private ArrayList<UserInfo> data;
 
     public Storage() {
-       data = new Vector<UserInfo>();
+       data = new ArrayList<UserInfo>();
        data.add(new UserInfo("John", "Vinchester", "Seattle",
         "16778999", group.Credit));
        data.add(new UserInfo("Zakk", "Brandon", "New York",
