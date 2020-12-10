@@ -1,0 +1,9 @@
+public interface MathOperation<N> {
+    public N add(N one, N two);
+    public N sub(N one, N two);
+    public N div(N one, N two);
+    public N mul(N one, N two);
+    public N sin(N number);
+    public N cos(N number);
+    public N pow(N number, N pow);
+}
