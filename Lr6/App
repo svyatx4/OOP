@@ -1,0 +1,34 @@
+public class App {
+    public static void main(String[] args) throws Exception {
+        System.out.println("Calculation results:");
+        System.out.println("Double numbers > ");
+        Numeric<Double> nd = new Numeric<Double>();
+        System.out.println(nd.add(1.0, 4.7));
+        System.out.println(nd.div(4.55, 90.4));
+        System.out.println(nd.mul(88.585, 8.0));
+        System.out.println(nd.sub(-394.33, 92.3));
+        System.out.println(nd.sin(32.44));
+        System.out.println(nd.cos(13.12));
+        System.out.println(nd.pow(223.4, -23.2));
+
+        System.out.println("\nInteger numbers > ");
+        Numeric<Integer> ni = new Numeric<Integer>();
+        System.out.println(ni.add(44, 4));
+        System.out.println(ni.div(55, 90));
+        System.out.println(ni.mul(76, -233));
+        System.out.println(ni.sub(30, 11));
+        System.out.println(ni.sin(33));
+        System.out.println(ni.cos(2));
+        System.out.println(ni.pow(4, 12));
+
+        System.out.println("\nFloat numbers > ");
+        Numeric<Float> nf = new Numeric<Float>();
+        System.out.println(nf.add(449.8f, 4.008f));
+        System.out.println(nf.div(9f, 72f));
+        System.out.println(nf.mul(76554f, -2.33f));
+        System.out.println(nf.sub(30f, 0.434f));
+        System.out.println(nf.sin(9f));
+        System.out.println(nf.cos(0.223f));
+        System.out.println(nf.pow(0.76f, 65f));
+    }
+}
