@@ -1,0 +1,78 @@
+public class Numeric<N extends Number> implements MathOperation<N> {
+    public N add(N one, N two) {
+        if (one instanceof Double) {
+            return (N) Double.valueOf((one.doubleValue() + two.doubleValue()));
+        } else if (one instanceof Float) {
+            return (N) Float.valueOf((one.floatValue() + two.floatValue()));
+        } else if (one instanceof Integer) {
+            return (N) Integer.valueOf((one.intValue() + two.intValue()));
+        } 
+        throw new IllegalArgumentException();
+    }
+
+    public N div(N one, N two) {
+        if (one instanceof Double) {
+            return (N) Double.valueOf((one.doubleValue() / two.doubleValue()));
+        } else if (one instanceof Float) {
+            return (N) Float.valueOf((one.floatValue() / two.floatValue()));
+        } else if (one instanceof Integer) {
+            return (N) Integer.valueOf((one.intValue() / two.intValue()));
+        } 
+        throw new IllegalArgumentException();
+    }
+
+    public N sub(N one, N two) {
+        if (one instanceof Double) {
+            return (N) Double.valueOf((one.doubleValue() - two.doubleValue()));
+        } else if (one instanceof Float) {
+            return (N) Float.valueOf((one.floatValue() - two.floatValue()));
+        } else if (one instanceof Integer) {
+            return (N) Integer.valueOf((one.intValue() - two.intValue()));
+        }
+        throw new IllegalArgumentException();
+    }
+
+    public N mul(N one, N two) {
+        if (one instanceof Double) {
+            return (N) Double.valueOf((one.doubleValue() * two.doubleValue()));
+        } else if (one instanceof Float) {
+            return (N) Float.valueOf((one.floatValue() * two.floatValue()));
+        } else if (one instanceof Integer) {
+            return (N) Integer.valueOf((one.intValue() * two.intValue()));
+        } 
+        throw new IllegalArgumentException();
+    }
+
+    public N sin(N number) {
+        if (number instanceof Double) {
+            return (N) Double.valueOf(Math.sin(number.doubleValue()));
+        } else if (number instanceof Float) {
+            return (N) Float.valueOf((float) Math.sin(number.floatValue()));
+        } else if (number instanceof Integer) {
+            return (N) Integer.valueOf((int) Math.sin(number.intValue()));
+        } 
+        throw new IllegalArgumentException();
+    }
+
+    public N cos(N number) {
+        if (number instanceof Double) {
+            return (N) Double.valueOf(Math.cos(number.doubleValue()));
+        } else if (number instanceof Float) {
+            return (N) Float.valueOf((float) Math.cos(number.floatValue()));
+        } else if (number instanceof Integer) {
+            return (N) Integer.valueOf((int) Math.cos(number.intValue()));
+        } 
+        throw new IllegalArgumentException();
+    }
+
+    public N pow(N number, N pow) {
+        if (number instanceof Double) {
+            return (N) Double.valueOf(Math.pow(number.doubleValue(), pow.doubleValue()));
+        } else if (number instanceof Float) {
+            return (N) Float.valueOf((float) Math.pow(number.floatValue(), pow.floatValue()));
+        } else if (number instanceof Integer) {
+            return (N) Integer.valueOf((int) Math.pow(number.intValue(), pow.intValue()));
+        } 
+        throw new IllegalArgumentException();
+    }   
+}
